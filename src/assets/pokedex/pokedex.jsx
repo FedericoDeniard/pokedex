@@ -26,14 +26,22 @@ const Pokedex = ({ pokedex, loading, error }) => {
   }, []);
 
   useEffect(() => {
-    if ((navKey === "ArrowDown") & (selectedPokemon < pokedex.length)) {
+    if (navKey === "ArrowDown" && selectedPokemon < pokedex.length) {
       setSelectedPokemon(selectedPokemon + 1);
       setNavKey("");
-    } else if ((navKey === "ArrowUp") & (selectedPokemon > 1)) {
+    } else if (navKey === "ArrowUp" && selectedPokemon > 1) {
       setSelectedPokemon(selectedPokemon - 1);
       setNavKey("");
     }
   }, [navKey]);
+
+  const handleArrow = (direction) => {
+    if (direction === "up" && selectedPokemon > 1) {
+      setSelectedPokemon(selectedPokemon - 1);
+    } else if (direction === "down" && selectedPokemon < pokedex.length) {
+      setSelectedPokemon(selectedPokemon + 1);
+    }
+  };
 
   useEffect(() => {
     const getSelectedPokemon = pokedex?.[selectedPokemon - 1];
@@ -84,25 +92,35 @@ const Pokedex = ({ pokedex, loading, error }) => {
             <button>Buscar</button>
           </div>
         </div>
-        <ul className="pokedex-container__array">
-          {loading && <li>loading...</li>}
-          {pokedex?.map((pokemon) => {
-            return (
-              <li
-                className={`pokemon ${
-                  selectedPokemon === pokemon.entry_number ? "highlight" : ""
-                }`}
-                onClick={() => changePokemon(pokemon.entry_number)}
-                key={pokemon.entry_number}
-                ref={
-                  selectedPokemon === pokemon.entry_number ? highlightRef : null
-                }
-              >
-                {pokemon.pokemon_species.name}
-              </li>
-            );
-          })}
-        </ul>
+        <div className="pokedex-container-list">
+          <div className="pokedex-label">
+            <p className="arrow up" onClick={() => handleArrow("up")}></p>
+          </div>
+          <ul className="pokedex-container__array">
+            {loading && <li>loading...</li>}
+            {pokedex?.map((pokemon) => {
+              return (
+                <li
+                  className={`pokemon ${
+                    selectedPokemon === pokemon.entry_number ? "highlight" : ""
+                  }`}
+                  onClick={() => changePokemon(pokemon.entry_number)}
+                  key={pokemon.entry_number}
+                  ref={
+                    selectedPokemon === pokemon.entry_number
+                      ? highlightRef
+                      : null
+                  }
+                >
+                  {pokemon.pokemon_species.name}
+                </li>
+              );
+            })}
+          </ul>
+          <div className="pokedex-label">
+            <p className="arrow down" onClick={() => handleArrow("down")}></p>
+          </div>
+        </div>
       </div>
     </div>
   );
