@@ -4,43 +4,57 @@
     justify-content: center;
     flex-direction: column;
     padding: 20px;
+    height: 100vh;
     max-height: 100vh;
     max-width: 100%;
     gap: 10px;
+    align-items: center;
 }
 
 .pokedex-title {
     background-color: #fff;
     border-radius: 15px;
-    padding: 2px;
+    padding: 10px;
     text-align: center;
+    width: fit-content;
 }
 
 .pokedex-container {
     display: flex;
-    height: 100%;
+    max-height: 400px;
     max-width: 100%;
     overflow-y: hidden;
     border-radius: 15px;
+    width: 100%;
+    justify-content: center;
 }
 
 .pokedex-container__pokemon {
     background-color: #fafafa;
     display: flex;
     flex-direction: column;
-    width: 50%;
+    justify-content: center;
+
 }
 
 .pokedex-container__pokemon .image img {
     object-fit: contain;
     filter: drop-shadow(25px 25px 10px #000);
-    height: 100%;
     width: 100%;
+    display: flex;
 }
 
 .image {
-    height: 85%;
+    height: 100%;
     display: flex;
+    position: relative;
+}
+
+.image-loading {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
 }
@@ -48,13 +62,20 @@
 
 .pokedex-menu {
     display: flex;
-    flex-direction: column;
     gap: 15px;
     padding: 5px;
     background-color: red;
     align-items: center;
     justify-content: center;
-    height: 15%;
+    height: fit-content;
+}
+
+.pokedex-menu button {
+    min-width: 60px;
+    padding: 5px;
+    border-radius: 15px;
+    font-size: clamp(16px, 5vw, 25px);
+    cursor: pointer;
 }
 
 .pokedex-container__array {
@@ -62,20 +83,16 @@
     overflow-y: scroll;
     padding: 5px;
     gap: 5px;
-    width: 50%;
-    font-size: clamp(16px, 5vw, 50px);
+    width: fit-content;
+    font-size: clamp(16px, 5vw, 40px);
     text-align: center;
 }
 
+.pokemon {
+    cursor: pointer;
+}
 
 .highlight {
     background-color: #fff;
-    border-radius: 15px;
-}
-
-
-.pokedex-menu button {
-    min-width: 60px;
-    padding: 5px;
     border-radius: 15px;
 }

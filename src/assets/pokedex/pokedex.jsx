@@ -61,6 +61,10 @@ const Pokedex = ({ pokedex, loading, error }) => {
     }
   }, [selectedPokemon, pokedex]);
 
+  const changePokemon = (entryNumber) => {
+    setSelectedPokemon(entryNumber);
+  };
+
   return (
     <div className="pokedex">
       <h1 className="pokedex-title">Pokedex</h1>
@@ -68,7 +72,9 @@ const Pokedex = ({ pokedex, loading, error }) => {
         <div className="pokedex-container__pokemon">
           <div className="image">
             {" "}
-            {imageLoading && <p className=" loading"></p>}
+            <div className="image-loading">
+              {imageLoading && <p className=" loading"></p>}
+            </div>
             {pokemonImage && !imageLoading && <img src={pokemonImage}></img>}
             {imageError && <p className="image error">{error}</p>}
           </div>
@@ -86,6 +92,7 @@ const Pokedex = ({ pokedex, loading, error }) => {
                 className={`pokemon ${
                   selectedPokemon === pokemon.entry_number ? "highlight" : ""
                 }`}
+                onClick={() => changePokemon(pokemon.entry_number)}
                 key={pokemon.entry_number}
                 ref={
                   selectedPokemon === pokemon.entry_number ? highlightRef : null
