@@ -161,3 +161,10 @@
     outline: 2px solid #7c6a2a;
     width: 50px;
 }
+
+@media only screen and (max-width: 420px) {
+    .pokedex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
