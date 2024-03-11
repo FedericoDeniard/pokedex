@@ -126,7 +126,7 @@
 }
 
 .pokedex-container__array {
-    background-color: #e6e630;
+    background-color: #e7e52f;
     overflow-y: scroll;
     padding: 5px;
     gap: 5px;
@@ -142,6 +142,7 @@
     text-shadow: 1px 1px #b2ad6d;
     padding: 2px;
     text-wrap: nowrap;
+    font-weight: 500;
 }
 
 .highlight {
