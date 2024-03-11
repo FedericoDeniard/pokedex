@@ -112,7 +112,7 @@ const Pokedex = ({ pokedex, loading, error }) => {
                       : null
                   }
                 >
-                  {pokemon.pokemon_species.name}
+                  {pokemon.pokemon_species.name.toUpperCase()}
                 </li>
               );
             })}

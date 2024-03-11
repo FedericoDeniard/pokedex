@@ -15,9 +15,10 @@
 .pokedex-title {
     background-color: #fff;
     border-radius: 15px;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     width: fit-content;
+    font-weight: 800;
 }
 
 .pokedex-container {
