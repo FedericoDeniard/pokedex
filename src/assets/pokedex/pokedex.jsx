@@ -84,7 +84,7 @@ const Pokedex = ({ pokedex, loading, error }) => {
               {imageLoading && <p className=" loading"></p>}
             </div>
             {pokemonImage && !imageLoading && <img src={pokemonImage}></img>}
-            {imageError && <p className="image error">{error}</p>}
+            {imageError && <p className="image-error">{error}</p>}
           </div>
 
           <div className="pokedex-menu">
@@ -112,7 +112,9 @@ const Pokedex = ({ pokedex, loading, error }) => {
                       : null
                   }
                 >
-                  {pokemon.pokemon_species.name.toUpperCase()}
+                  {`N.°${
+                    pokemon.entry_number
+                  } ${pokemon.pokemon_species.name.toUpperCase()}`}
                 </li>
               );
             })}
