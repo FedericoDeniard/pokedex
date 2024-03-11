@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./pokedex.css";
 
 const Pokedex = ({ pokedex, loading, error }) => {
@@ -7,6 +7,8 @@ const Pokedex = ({ pokedex, loading, error }) => {
   const [imageLoading, setImageLoading] = useState(true);
   const [imageError, setImageError] = useState(null);
   const [navKey, setNavKey] = useState("");
+
+  const highlightRef = useRef(null);
 
   useEffect(() => {
     const detectKeyDown = (e) => {
@@ -24,10 +26,10 @@ const Pokedex = ({ pokedex, loading, error }) => {
   }, []);
 
   useEffect(() => {
-    if (navKey === "ArrowDown") {
+    if ((navKey === "ArrowDown") & (selectedPokemon < pokedex.length)) {
       setSelectedPokemon(selectedPokemon + 1);
       setNavKey("");
-    } else if (navKey === "ArrowUp") {
+    } else if ((navKey === "ArrowUp") & (selectedPokemon > 1)) {
       setSelectedPokemon(selectedPokemon - 1);
       setNavKey("");
     }
@@ -51,6 +53,12 @@ const Pokedex = ({ pokedex, loading, error }) => {
         .finally(() => setImageLoading(false));
     };
     getPokemonImage();
+    if (highlightRef.current) {
+      highlightRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
   }, [selectedPokemon, pokedex]);
 
   return (
@@ -79,6 +87,9 @@ const Pokedex = ({ pokedex, loading, error }) => {
                   selectedPokemon === pokemon.entry_number ? "highlight" : ""
                 }`}
                 key={pokemon.entry_number}
+                ref={
+                  selectedPokemon === pokemon.entry_number ? highlightRef : null
+                }
               >
                 {pokemon.pokemon_species.name}
               </li>

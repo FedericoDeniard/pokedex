@@ -31,10 +31,11 @@
     width: 50%;
 }
 
-.pokedex-container__pokemon img {
+.pokedex-container__pokemon .image img {
     object-fit: contain;
     filter: drop-shadow(25px 25px 10px #000);
     height: 100%;
+    width: 100%;
 }
 
 .image {
@@ -69,6 +70,7 @@
 
 .highlight {
     background-color: #fff;
+    border-radius: 15px;
 }
 
 
