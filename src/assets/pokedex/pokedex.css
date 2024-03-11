@@ -95,7 +95,7 @@
 }
 
 .arrow {
-    border: ridge #000;
+    border: ridge #d31e97;
     border-width: 0 5px 5px 0;
     display: inline-block;
     padding: 5px;
@@ -129,7 +129,6 @@
     gap: 5px;
     width: fit-content;
     font-size: clamp(16px, 5vw, 40px);
-    text-align: center;
     border: 2px solid #000;
     height: 100%;
 }
