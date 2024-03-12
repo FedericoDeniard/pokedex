@@ -4,7 +4,7 @@ import "./App.css";
 import { useFetch } from "./assets/pokedex/useFetch";
 
 function App() {
-  const { apiStatus, pokemonArray, loading, error } = useFetch(
+  const { pokemonArray, loading, error } = useFetch(
     "https://pokeapi.co/api/v2/pokedex/hoenn"
   );
   return (
