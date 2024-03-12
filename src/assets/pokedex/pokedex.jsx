@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import "./pokedex.css";
 import PokemonInfo from "../pokemonInfo/pokemonInfo";
+import useSound from "use-sound";
+import sound1 from "../sounds/sound1.mp3";
+import sound2 from "../sounds/sound2.mp3";
 
 const Pokedex = ({ pokedex, loading, error }) => {
   const [selectedPokemon, setSelectedPokemon] = useState(1);
@@ -82,6 +85,15 @@ const Pokedex = ({ pokedex, loading, error }) => {
     }
   }, [selectedPokemon, pokedex, pokemonInfoStatus]);
 
+  useEffect(() => {
+    playAudio(sound1);
+  }, [selectedPokemon]);
+
+  const playAudio = (src) => {
+    const audio = new Audio(src);
+    audio.play();
+  };
+
   const changePokemon = (entryNumber) => {
     setSelectedPokemon(entryNumber);
   };
@@ -107,7 +119,12 @@ const Pokedex = ({ pokedex, loading, error }) => {
 
           <div className="pokedex-menu">
             <button onClick={reset}> Inicio</button>
-            <button onClick={() => setPokemonInfoStatus(!pokemonInfoStatus)}>
+            <button
+              onClick={() => {
+                setPokemonInfoStatus(!pokemonInfoStatus);
+                playAudio(sound2);
+              }}
+            >
               {!pokemonInfoStatus ? "Entrar" : "Salir"}
             </button>
           </div>
