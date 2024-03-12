@@ -86,6 +86,11 @@ const Pokedex = ({ pokedex, loading, error }) => {
     setSelectedPokemon(entryNumber);
   };
 
+  const reset = () => {
+    setSelectedPokemon(1);
+    setPokemonInfoStatus(false);
+  };
+
   return (
     <div className="pokedex">
       <h1 className="pokedex-title">Pokedex</h1>
@@ -101,7 +106,7 @@ const Pokedex = ({ pokedex, loading, error }) => {
           </div>
 
           <div className="pokedex-menu">
-            <button> Menú</button>
+            <button onClick={reset}> Inicio</button>
             <button onClick={() => setPokemonInfoStatus(!pokemonInfoStatus)}>
               {!pokemonInfoStatus ? "Entrar" : "Salir"}
             </button>
