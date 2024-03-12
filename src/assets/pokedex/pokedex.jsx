@@ -118,7 +118,14 @@ const Pokedex = ({ pokedex, loading, error }) => {
           </div>
 
           <div className="pokedex-menu">
-            <button onClick={reset}> Inicio</button>
+            <button
+              onClick={() => {
+                reset(), playAudio(sound2);
+              }}
+            >
+              {" "}
+              Inicio
+            </button>
             <button
               onClick={() => {
                 setPokemonInfoStatus(!pokemonInfoStatus);
